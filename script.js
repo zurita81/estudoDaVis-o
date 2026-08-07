@@ -24,5 +24,4 @@ btnContraste.setAttribute("aria-pressed", ativo);
 
 
 
-
 }
