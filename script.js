@@ -20,8 +20,22 @@ document.body.classList.toogle("alto-contraste");
 const ativo = document.body.classList.contains("alto-contrste")
 btnContraste.setAttribute("aria-pressed", ativo);
 
-)
+)};
 
+//função aumenta o texto
 
+btnAumentar.addEventListener("click" , ()=>{
+    if (tamanhoAtualFonte < 150){
+        tamanhoAtualFonte += 10;
+        document.documentElement.style.fontSize = `${tamanhoAtualFonte}%`;
+    }
+});
 
-}
+//função diminuir texto;
+
+btnDiminuir.addEventListener("click" , ()=> {
+    if(tamanhoAtualFonte > 90){
+        tamanhoAtualFonte -= 10;
+        document.documentElement.style.fontSize = `${tamanhoAtualFonte}%`;
+    }
+})
