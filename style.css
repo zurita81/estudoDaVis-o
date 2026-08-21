@@ -1,131 +1,160 @@
-/* Configurações Gerais */
+/* Importação de fonte moderna (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --bg-color: #f8f9fa;
+    --primary-color: #1e293b;
+    --secondary-color: #2563eb;
+    --bg-color: #f1f5f9;
     --card-bg: #ffffff;
-    --text-color: #333333;
-    --border-color: #e9ecef;
+    --text-color: #334155;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
 }
 
 html {
     font-size: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.7;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.8;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     margin: 0;
-    padding: 0 0 40px 0;
+    padding-bottom: 60px;
+    min-height: 100vh;
 }
 
-/* Layout Central */
+/* Container Responsivo */
 .container {
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Barra de Acessibilidade */
+/* Barra de Acessibilidade Flutuante */
 .barra-acessibilidade {
-    background-color: #e9ecef;
-    padding: 10px 0;
-    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
     border-bottom: 1px solid var(--border-color);
+    padding: 12px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .barra-acessibilidade .container {
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 8px;
 }
 
 .barra-acessibilidade button {
     background-color: #ffffff;
-    border: 1px solid #ccc;
-    padding: 6px 12px;
-    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 20px; /* Formato de pílula */
     cursor: pointer;
-    font-weight: bold;
-    color: #333;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .barra-acessibilidade button:hover {
-    background-color: #ddd;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    border-color: var(--secondary-color);
+    transform: translateY(-1px);
 }
 
 /* Cabeçalho */
 header {
     text-align: center;
-    margin-bottom: 40px;
+    padding: 50px 0 30px 0;
 }
 
 h1 {
     color: var(--primary-color);
-    font-size: 2.2rem;
-    margin-bottom: 10px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
 }
 
 .subtitle {
-    color: #666666;
-    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    margin: 0;
 }
 
-/* Cartões de Conteúdo / Seções */
+/* Cartões de Conteúdo */
 .card, section {
     background-color: var(--card-bg);
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 36px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
+    transition: transform 0.2s ease;
 }
 
 h2 {
     color: var(--secondary-color);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
     margin-top: 0;
-    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+    line-height: 1.4;
 }
 
 p {
     text-align: justify;
-    margin-bottom: 0;
-    text-indent: 2em;
+    margin: 0;
+    text-indent: 1.5em;
+    font-size: 1rem;
 }
 
 /* Rodapé */
 footer {
     text-align: center;
-    margin-top: 40px;
-    color: #888888;
-    font-size: 0.9rem;
+    margin-top: 50px;
+    color: var(--text-muted);
+    font-size: 0.875rem;
 }
 
-/* Regras de Alto Contraste para Acessibilidade */
+/* Mode Alto Contraste Ajustado */
 body.alto-contraste {
-    background-color: #000000 !important;
+    background: #000000 !important;
     color: #ffffff !important;
 }
 
 body.alto-contraste .card,
-body.alto-contraste section,
-body.alto-contraste .barra-acessibilidade {
+body.alto-contraste section {
     background-color: #121212 !important;
     border-color: #ffff00 !important;
-    color: #ffffff !important;
+    box-shadow: none;
+}
+
+body.alto-contraste .barra-acessibilidade {
+    background-color: #000000 !important;
+    border-color: #ffff00 !important;
 }
 
 body.alto-contraste h1,
 body.alto-contraste h2 {
     color: #ffff00 !important;
+    border-color: #ffff00 !important;
 }
 
 body.alto-contraste .barra-acessibilidade button {
     background-color: #ffff00 !important;
     color: #000000 !important;
-    border: 2px solid #ffffff !important;
+    border-color: #ffffff !important;
 }
