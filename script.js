@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Barra de Progresso de Leitura e Botão Voltar ao Topo
+    // Barra de Progresso e Botão Voltar ao Topo
     const barra = document.getElementById("barra-progresso");
     const btnTopo = document.getElementById("btn-topo");
 
@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
             barra.style.width = `${progresso}%`;
         }
 
-        // Exibe o botão de voltar ao topo após rolar 300px
+        // Exibe o botão ao rolar mais de 200px
         if (btnTopo) {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 200) {
                 btnTopo.style.display = "block";
             } else {
                 btnTopo.style.display = "none";
@@ -58,10 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Ação de Voltar ao Topo
+    // Ação de Voltar ao Topo (compatível com todos os navegadores)
     if (btnTopo) {
         btnTopo.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
         });
     }
 });
