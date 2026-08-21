@@ -8,19 +8,52 @@
     --border-color: #e9ecef;
 }
 
+html {
+    font-size: 100%;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.7;
     color: var(--text-color);
     background-color: var(--bg-color);
     margin: 0;
-    padding: 40px 20px;
+    padding: 0 0 40px 0;
 }
 
 /* Layout Central */
 .container {
     max-width: 900px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Barra de Acessibilidade */
+.barra-acessibilidade {
+    background-color: #e9ecef;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.barra-acessibilidade .container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.barra-acessibilidade button {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+.barra-acessibilidade button:hover {
+    background-color: #ddd;
 }
 
 /* Cabeçalho */
@@ -70,4 +103,29 @@ footer {
     margin-top: 40px;
     color: #888888;
     font-size: 0.9rem;
+}
+
+/* Regras de Alto Contraste para Acessibilidade */
+body.alto-contraste {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.alto-contraste .card,
+body.alto-contraste section,
+body.alto-contraste .barra-acessibilidade {
+    background-color: #121212 !important;
+    border-color: #ffff00 !important;
+    color: #ffffff !important;
+}
+
+body.alto-contraste h1,
+body.alto-contraste h2 {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .barra-acessibilidade button {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
 }

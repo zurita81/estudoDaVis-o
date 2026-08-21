@@ -1,41 +1,40 @@
-//Botões de acessibilidade
-document.addEventListener("DOMContentLoaded, () => {
+// Botões de acessibilidade
+document.addEventListener("DOMContentLoaded", () => {
     
-const btnContraste = document.getElementById("btn-contraste");
-const btnAumentar = document.getElementById("btn-aumentar-texto");
-const btnDiminuir = document.getElementById("btn-diminuir-texto")
+    const btnContraste = document.getElementById("btn-contraste");
+    const btnAumentar = document.getElementById("btn-aumentar-texto");
+    const btnDiminuir = document.getElementById("btn-diminuir-texto");
 
-//aumenta a fonte
+    let tamanhoAtualFonte = 100;
 
-let tamanhoAtualFonte = 100;
+    // Função alto contraste
+    if (btnContraste) {
+        btnContraste.addEventListener("click", () => {  
+            document.body.classList.toggle("alto-contraste");
 
-//função alto contraste
+            // Acessibilidade para leitores de tela
+            const ativo = document.body.classList.contains("alto-contraste");
+            btnContraste.setAttribute("aria-pressed", ativo);
+        });
+    }
 
-btnContraste.addEventListener("click,() =>{  
-    
-document.body.classList.toogle("alto-contraste");
+    // Função aumentar o texto
+    if (btnAumentar) {
+        btnAumentar.addEventListener("click", () => {
+            if (tamanhoAtualFonte < 150) {
+                tamanhoAtualFonte += 10;
+                document.documentElement.style.fontSize = `${tamanhoAtualFonte}%`;
+            }
+        });
+    }
 
-//acessibilidade para leitores de tela
-
-const ativo = document.body.classList.contains("alto-contrste")
-btnContraste.setAttribute("aria-pressed", ativo);
-
-)};
-
-//função aumenta o texto
-
-btnAumentar.addEventListener("click" , ()=>{
-    if (tamanhoAtualFonte < 150){
-        tamanhoAtualFonte += 10;
-        document.documentElement.style.fontSize = `${tamanhoAtualFonte}%`;
+    // Função diminuir o texto
+    if (btnDiminuir) {
+        btnDiminuir.addEventListener("click", () => {
+            if (tamanhoAtualFonte > 90) {
+                tamanhoAtualFonte -= 10;
+                document.documentElement.style.fontSize = `${tamanhoAtualFonte}%`;
+            }
+        });
     }
 });
-
-//função diminuir texto;
-
-btnDiminuir.addEventListener("click" , ()=> {
-    if(tamanhoAtualFonte > 90){
-        tamanhoAtualFonte -= 10;
-        document.documentElement.style.fontSize = `${tamanhoAtualFonte}%`;
-    }
-})
