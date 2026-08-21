@@ -1,15 +1,16 @@
-/* Importação de fonte moderna (Inter) */
+/* Importação da fonte Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-    --primary-color: #1e293b;
-    --secondary-color: #2563eb;
-    --bg-color: #f1f5f9;
-    --card-bg: #ffffff;
-    --text-color: #334155;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    /* Paleta Principal: Vermelho, Azul, Preto e Branco */
+    --primary-color: #0d1b2a;     /* Preto azulado / Azul bem escuro para o texto principal */
+    --accent-red: #b91c1c;        /* Vermelho elegante para destaques e títulos */
+    --accent-red-hover: #991b1b;  /* Vermelho mais escuro para o hover dos botões */
+    --accent-blue: #1e3a8a;       /* Azul marinho sofisticado para detalhes e bordas */
+    --bg-light: #f8fafc;          /* Fundo da página em tom branco levemente suavizado */
+    --card-bg: #ffffff;           /* Branco puro para os cartões de texto */
+    --border-color: #cbd5e1;      /* Borda cinza suave */
+    --shadow: 0 10px 15px -3px rgba(13, 27, 42, 0.08);
 }
 
 html {
@@ -20,8 +21,8 @@ html {
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.8;
-    color: var(--text-color);
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: var(--primary-color);
+    background-color: var(--bg-light);
     margin: 0;
     padding-bottom: 60px;
     min-height: 100vh;
@@ -34,16 +35,14 @@ body {
     padding: 0 20px;
 }
 
-/* Barra de Acessibilidade Flutuante */
+/* Barra de Acessibilidade (Fundo Azul Marinho) */
 .barra-acessibilidade {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
+    background-color: var(--accent-blue);
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--border-color);
     padding: 12px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .barra-acessibilidade .container {
@@ -52,23 +51,22 @@ body {
     gap: 8px;
 }
 
+/* Botões da Barra (Brancos com detalhes Vermelhos) */
 .barra-acessibilidade button {
     background-color: #ffffff;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--accent-red);
     padding: 8px 16px;
-    border-radius: 20px; /* Formato de pílula */
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875rem;
-    color: var(--primary-color);
+    color: var(--accent-red);
     transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .barra-acessibilidade button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--accent-red);
     color: #ffffff;
-    border-color: var(--secondary-color);
     transform: translateY(-1px);
 }
 
@@ -87,12 +85,13 @@ h1 {
 }
 
 .subtitle {
-    color: var(--text-muted);
+    color: var(--accent-blue);
     font-size: 1.125rem;
+    font-weight: 600;
     margin: 0;
 }
 
-/* Cartões de Conteúdo */
+/* Cartões de Conteúdo (Fundo Branco com Borda Azul e Título Vermelho) */
 .card, section {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -100,17 +99,17 @@ h1 {
     margin-bottom: 32px;
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
-    transition: transform 0.2s ease;
+    border-top: 4px solid var(--accent-blue); /* Linha de destaque azul no topo do cartão */
 }
 
 h2 {
-    color: var(--secondary-color);
+    color: var(--accent-red);
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 0;
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #f1f5f9;
+    border-bottom: 2px solid var(--bg-light);
     line-height: 1.4;
 }
 
@@ -125,11 +124,12 @@ p {
 footer {
     text-align: center;
     margin-top: 50px;
-    color: var(--text-muted);
+    color: var(--accent-blue);
     font-size: 0.875rem;
+    font-weight: 600;
 }
 
-/* Mode Alto Contraste Ajustado */
+/* Modo Alto Contraste (Preservado para Acessibilidade) */
 body.alto-contraste {
     background: #000000 !important;
     color: #ffffff !important;
@@ -139,16 +139,19 @@ body.alto-contraste .card,
 body.alto-contraste section {
     background-color: #121212 !important;
     border-color: #ffff00 !important;
+    border-top: 4px solid #ffff00 !important;
     box-shadow: none;
 }
 
 body.alto-contraste .barra-acessibilidade {
     background-color: #000000 !important;
-    border-color: #ffff00 !important;
+    border-bottom: 2px solid #ffff00 !important;
 }
 
 body.alto-contraste h1,
-body.alto-contraste h2 {
+body.alto-contraste h2,
+body.alto-contraste .subtitle,
+body.alto-contraste footer {
     color: #ffff00 !important;
     border-color: #ffff00 !important;
 }
@@ -156,5 +159,5 @@ body.alto-contraste h2 {
 body.alto-contraste .barra-acessibilidade button {
     background-color: #ffff00 !important;
     color: #000000 !important;
-    border-color: #ffffff !important;
+    border: 2px solid #ffffff !important;
 }
