@@ -2,14 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-    /* Paleta Principal: Vermelho, Azul, Preto e Branco */
-    --primary-color: #0d1b2a;     /* Preto azulado / Azul bem escuro para o texto principal */
-    --accent-red: #b91c1c;        /* Vermelho elegante para destaques e títulos */
-    --accent-red-hover: #991b1b;  /* Vermelho mais escuro para o hover dos botões */
-    --accent-blue: #1e3a8a;       /* Azul marinho sofisticado para detalhes e bordas */
-    --bg-light: #f8fafc;          /* Fundo da página em tom branco levemente suavizado */
-    --card-bg: #ffffff;           /* Branco puro para os cartões de texto */
-    --border-color: #cbd5e1;      /* Borda cinza suave */
+    --primary-color: #0d1b2a;     /* Azul escuro / Preto para leitura */
+    --accent-red: #b91c1c;        /* Vermelho vibrante para destaques */
+    --accent-blue: #1e3a8a;       /* Azul marinho para cabeçalhos e bordas */
+    --bg-light: #f8fafc;          /* Fundo branco suave */
+    --card-bg: #ffffff;           /* Branco puro para os cartões */
+    --border-color: #cbd5e1;      /* Borda cinza clara */
     --shadow: 0 10px 15px -3px rgba(13, 27, 42, 0.08);
 }
 
@@ -28,6 +26,18 @@ body {
     min-height: 100vh;
 }
 
+/* Barra de Progresso de Leitura */
+#barra-progresso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--accent-red);
+    width: 0%;
+    z-index: 101;
+    transition: width 0.1s ease;
+}
+
 /* Container Responsivo */
 .container {
     max-width: 850px;
@@ -35,7 +45,7 @@ body {
     padding: 0 20px;
 }
 
-/* Barra de Acessibilidade (Fundo Azul Marinho) */
+/* Barra de Acessibilidade (Azul Marinho) */
 .barra-acessibilidade {
     background-color: var(--accent-blue);
     position: sticky;
@@ -51,7 +61,6 @@ body {
     gap: 8px;
 }
 
-/* Botões da Barra (Brancos com detalhes Vermelhos) */
 .barra-acessibilidade button {
     background-color: #ffffff;
     border: 2px solid var(--accent-red);
@@ -70,7 +79,7 @@ body {
     transform: translateY(-1px);
 }
 
-/* Cabeçalho */
+/* Cabeçalho Principal */
 header {
     text-align: center;
     padding: 50px 0 30px 0;
@@ -91,7 +100,7 @@ h1 {
     margin: 0;
 }
 
-/* Cartões de Conteúdo (Fundo Branco com Borda Azul e Título Vermelho) */
+/* Cartões de Conteúdo */
 .card, section {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -99,7 +108,18 @@ h1 {
     margin-bottom: 32px;
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
-    border-top: 4px solid var(--accent-blue); /* Linha de destaque azul no topo do cartão */
+    border-top: 4px solid var(--accent-blue);
+}
+
+.tempo-leitura {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    margin-bottom: 12px;
+    background-color: #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 12px;
 }
 
 h2 {
@@ -129,7 +149,32 @@ footer {
     font-weight: 600;
 }
 
-/* Modo Alto Contraste (Preservado para Acessibilidade) */
+/* Botão Flutuante Voltar ao Topo */
+#btn-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none;
+    transition: all 0.2s ease;
+    z-index: 99;
+}
+
+#btn-topo:hover {
+    background-color: var(--accent-red);
+    transform: scale(1.1);
+}
+
+/* Modo Alto Contraste */
 body.alto-contraste {
     background: #000000 !important;
     color: #ffffff !important;
